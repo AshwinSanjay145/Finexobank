@@ -48,4 +48,6 @@ def register(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect('/')
+    messages.info(request,"you were logged out")
+    code = 0
+    return render(request,'login.html',{"code":code})

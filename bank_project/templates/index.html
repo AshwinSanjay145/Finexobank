@@ -4,11 +4,19 @@
 <title>Finexo Bank</title>
 {% endblock %}
 {% block content %}
+
+
+
 <section class="slider_section ">
       <div id="customCarousel1" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <div class="container ">
+              {% for msg in messages%}
+              <div class="alert alert-danger" role="alert">
+              {{msg}}
+              </div>
+              {% endfor %}
               <div class="row">
                 <div class="col-md-6 ">
                   <div class="detail-box">

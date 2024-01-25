@@ -36,6 +36,7 @@ def application(request):
                 if applicationform.objects.filter(mail_id=mail).exists():
                     messages.info(request,'Email already Taken')
                     code = 0
+
                 else:
                     submit=applicationform(name=name,Date_of_Birth=dob,age=age,gender=gender,
                                            mail_id=mail,address=addr,phone=phone,district=district,branch=branch,account_ype=acc,materials_to_provide=req)
@@ -45,7 +46,7 @@ def application(request):
             else:
                 messages.info(request,'Please fill all the details')
                 code = 0
-                return render(request, 'application.html', {"form": form,"code":code})
+            return render(request, 'application.html', {"form": form,"code":code})
 
         else:
             form = LocationForm()
