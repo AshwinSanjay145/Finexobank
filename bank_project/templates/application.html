@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>New Application</title>
+{% endblock%}
+{% block content %}
+
+ <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+
+<div class="container-fluid ">
+
+
+
+  <div class="mx-auto my-color " style="width: 700px; padding-top:10px">
+  <div class="">
+  <form  method="post" class="register" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container">
+      <div>
+
+      {% if code == 0 %}
+        {% for msg in messages %}
+
+            <div class="alert alert-danger" role="alert">
+            {{msg}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+        {% endfor %}
+      {% else %}
+        {% for msg in messages %}
+            <div class="alert alert-success" role="alert">
+            {{msg}}<a href="/" class="alert-link">Home page</a>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+        {% endfor %}
+      {% endif %}
+
+  </div>
+    <div class="mx-auto pb-2" style="width: 200px;" >
+      <h4 class="form-label">New Application </h4>
+    </div>
+    <div class="row">
+      <div class="col-6 ">
+        <label class="form-label pl-1">First name</label>
+        <input type="text" class="form-control" name="fname" >
+    </div>
+    <div class="col-6 ">
+      <label class="form-label pl-1">Last name</label>
+        <input type="text" class="form-control" name="lname" >
+    </div>
+
+
+    </div>
+
+      <div class="row">
+        <div class="col-6 ">
+          <label class="form-label pl-1">Date of Birth</label>
+          <input type="date" class="form-control" name="date" >
+        </div>
+        <div class="col-6 ">
+          <label class="form-label pl-1">Age</label>
+          <input type="number" class="form-control" name="age" >
+        </div>
+
+      </div>
+
+
+    <div class="row">
+      <div class="col-6  ">
+        <label class="form-label pl-1">Email</label>
+          <input class="form-control" type="email" name="mail" placeholder="Mail ID">
+
+      </div>
+      <div class="col-6 ">
+          <label class="form-label pl-1">Phone Number</label>
+          <input class="form-control" type="text" name="phone" >
+        </div>
+    </div>
+
+      <div class="row">
+
+        <div class="col-6 ">
+            {{form.as_p}}
+        </div>
+        <div class="col-6 ">
+            <label class="form-label" for="account">Account Type </label>
+            <select class="form-control" name="account" id="account">
+              <option value="Savings">Savings Account</option>
+              <option value="Current">Current Account</option>
+            </select>
+        <div class="col-12 pt-3">
+            <label class="form-label">Gender :</label> &nbsp;&nbsp;<br>
+          <input type="radio" name="gender" value="Male">
+          <label  class="form-label" for="Male">Male</label>&nbsp;&nbsp;
+          <input  type="radio" name="gender" value="Female">
+          <label class="form-label" for="Female">Female</label>&nbsp;&nbsp;
+          <input type="radio" name="gender" value="Other">
+          <label class="form-label" for="Other">Other</label>
+        </div>
+        </div>
+
+      </div>
+      <div class="row">
+
+        <div class="col-6 ">
+          <label class="form-label pl-1">Address</label>
+          <textarea class="form-control"  name="addr" ></textarea>
+        </div>
+
+        <div class="col-6">
+          <label class="form-label">Materials Need</label><br>
+          <div class="row">
+            <div class="col-6">
+              <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="debit_card" value="Debit card" name="materials">
+            <label class="form-check-label" for="debit_card" >debit card</label>
+          </div>
+
+              <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="credit_card" value="Credit card" name="materials">
+              <label class="form-check-label" for="credit_card" >credit card</label>
+          </div>
+
+            </div>
+
+            <div class="col-6">
+              <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="cheque_book" value="Cheque Book" name="materials">
+              <label class="form-check-label" for="cheque_book" >Cheque Book</label>
+              </div>
+
+              <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="pass_book" value="Passbook" name="materials">
+                  <label class="form-check-label" for="pass_book" >Passbook</label>
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+        </div>
+
+
+<!--    <div class="mx-auto pb-2" style="width: 250px; background-color:red" >-->
+<!--      <div class="pt-4 pl-4 ">-->
+<!--        <button class="btn btn-primary" type="submit">Submit</button>-->
+<!--        <a href="" class="btn btn-primary">Logout  </a>-->
+<!--      </div>-->
+
+      <div class="d-flex justify-content-center pt-3 pb-2">
+          <div class="p-2 ">
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </div>
+          <div class="p-2">
+            <a href="{% url 'user:logout' %}" class="btn btn-primary">Logout  </a>
+          </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  </form>
+</div>
+ </div>
+</div>
+
+<style>
+  .register{
+  color:white;
+  }
+
+  .my-color{
+  background-color: rgba(0, 0, 0,0.5);
+  border: 2px solid #007bff;
+  border-radius: 15px;
+  }
+
+</style>
+
+
+
+
+ {% endblock %}
+
+
+
+
+
+<!--<a href="{% url 'user:logout' %}" class="btn btn-primary">Logout</a><br>-->
+
+
+
+<!--<script src="https://unpkg.com/htmx.org@1.9.10"></script>-->
+<!--<form method="post" enctype="multipart/form-data">-->
+<!--  <input type="text" name="fname" placeholder="firstname"><br><br>-->
+<!--  <input type="text" name="lname" placeholder="lastname"><br><br>-->
+<!--  <input type="date" name="date" placeholder="Date of Birth"><br><br>-->
+<!--  <input type="number" name="age" placeholder="age"><br><br>-->
+
+<!--  <input type="radio" name="gender" value="Male">-->
+<!--  <label for="Male">Male</label>-->
+<!--  <input type="radio" name="gender" value="Female">-->
+<!--  <label for="Female">Female</label>-->
+<!--  <input type="radio" name="gender" value="Other">-->
+<!--  <label for="Other">Other</label><br><br>-->
+
+<!--  <input type="text" name="phone" placeholder="Phone number"><br><br>-->
+<!--  <input type="email" name="mail" placeholder="Mail ID"><br><br>-->
+
+<!--  <textarea name="addr" placeholder="address"></textarea><br><br>-->
+<!--  {% csrf_token %}-->
+<!--  {{form.as_p}}-->
+<!--  <br>-->
+
+<!--  <br><br>-->
+
+<!--  <br><br>-->
+<!--  <input type="submit">-->
+<!--  <a href="{% url 'user:logout' %}" class="btn btn-primary">Logout</a><br>-->
+<!--</form>-->

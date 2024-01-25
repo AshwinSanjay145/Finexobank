@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Profile</title>
+{% endblock%}
+{% block content %}
+
+<div class="container-fluid ">
+  <div class="mx-auto " style="width: 250px; padding-top:10%">
+
+        <a href="{% url 'application' %}" class="btn btn-primary btn-block mb-4">New Application</a>
+        <a href="{% url 'user:logout' %}" class="btn btn-primary btn-block mb-4">Logout</a>
+
+ </div>
+</div>
+
+<style>
+  .form-label{
+  color:white;
+  }
+</style>
+
+
+
+
+ {% endblock %}
+
+
+
+
+
+<a href="{% url 'user:logout' %}" class="btn btn-primary">Logout</a><br>
+
+

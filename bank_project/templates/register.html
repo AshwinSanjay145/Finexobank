@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Register</title>
+{% endblock%}
+{% block content %}
+
+<div class="container-fluid ">
+  <div class="mx-auto my-color" style="width: 300px;">
+    <div>
+        <form  method="post" action="register" >
+            <div class="container">
+
+                <div class="mx-auto pb-2 " style="width: 100px;" >
+                 <h4 class="form-label">Register</h4>
+                </div>
+                {% for msg in messages %}
+                  <div class="alert alert-danger" role="alert">
+                    {{msg}}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                     </button>
+                  </div>
+                {% endfor %}
+              {% csrf_token %}
+
+    <input type="text" id="form2Example1" name="username" class="form-control" />
+    <label class="form-label" for="form2Example1">Username</label>
+
+    <input type="password" id="form2Example2" name="password" class="form-control" />
+    <label class="form-label" for="form2Example2">Password</label>
+
+     <input type="password" id="form2Example3" name="cpassword" class="form-control" />
+    <label class="form-label" for="form2Example3">Confirm Password</label>
+
+
+  <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+  <!-- Register buttons -->
+
+    <p class="form-label">have a account ? &nbsp; <a href="{% url 'user:login' %}">Login</a></p>
+
+
+
+            </div>
+        </form>
+    </div>
+
+
+ </div>
+</div>
+
+
+<!--      <div class="container">-->
+<!--        <div class="row align-items-center justify-content-center">-->
+
+
+<!--          <div class="col-md-10 mt-lg-5 text-center">-->
+
+<!--            <form class="myform" method="post" action="register">-->
+<!--                {% csrf_token %}-->
+<!--              &lt;!&ndash; Email input &ndash;&gt;-->
+<!--              <div class="form-outline mb-4">-->
+<!--                <input type="text" name="username" class="form-control" />-->
+<!--                <label class="form-label" >Username</label>-->
+<!--              </div>-->
+
+<!--             &lt;!&ndash; Password input &ndash;&gt;-->
+<!--                  <div class="form-outline mb-4">-->
+<!--                     <input type="password" name="password" class="form-control" />-->
+<!--                    <label class="form-label" >Password</label>-->
+<!--                 </div>-->
+<!--                <div class="form-outline mb-4">-->
+<!--              <input type="password" name="cpassword" class="form-control" />-->
+<!--               <label class="form-label" >Confirm Password</label>-->
+<!--              </div>-->
+
+<!--  &lt;!&ndash; 2 column grid layout for inline styling &ndash;&gt;-->
+
+
+<!--  &lt;!&ndash; Submit button &ndash;&gt;-->
+<!--          <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>-->
+
+<!--          &lt;!&ndash; Register buttons &ndash;&gt;-->
+<!--          <div class="text-center">-->
+<!--            <p>Already a member? <a href="{% url 'user:login' %}">Login</a></p>-->
+
+<!--          </div>-->
+<!--            </form>-->
+<!--          </div>-->
+<!--          </div>-->
+
+<!--        </div>-->
+
+<style>
+  .form-label{
+  color:white;
+  }
+
+  .my-color{
+  background-color: rgba(0, 0, 0,0.5);
+  border: 2px solid ;
+  border-radius: 15px;
+  }
+</style>
+
+
+ {% endblock %}
+
